@@ -1,7 +1,7 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Text from './components/Text';
+import ItemListContainer from './components/ItemListContainer';
 import NavBar from './components/NavBar';
+
 <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -13,9 +13,8 @@ function App() {
   return (
     <div className="container">
       <NavBar/>
-      <Text/>
+      <ItemListContainer texto='Texto pasado por props'/>
     </div>
   );
 }
-
 export default App;
