@@ -2,11 +2,12 @@ import Navbar from 'react-bootstrap/navbar'
 import CartWidget from './CartWidget';
 import Brand from './Brand';
 import NavDropDown from './NavDropDown';
+import Boton from './Boton';
 
 export default function NavBar() {
     return (
-        <Navbar bg="success" expand="lg">
-            <Brand/>
+        <Navbar bg="success">
+            <Brand />
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
@@ -15,13 +16,13 @@ export default function NavBar() {
                     <li className="nav-item">
                         <a className="nav-link" href="#">Ofertas</a>
                     </li>
-                    <NavDropDown/>                  
+                    <NavDropDown />
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     <input className="form-control mr-sm-2" type="search" placeholder="" aria-label="Search"></input>
-                    <button className="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
-                    <CartWidget />
+                    <Boton texto='Buscar' />
                 </form>
+                <CartWidget />
             </div>
         </Navbar>
     )
