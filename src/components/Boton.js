@@ -2,6 +2,6 @@ import { Button } from "react-bootstrap";
 
 export default function Boton(props) {
     return (
-        <Button variant="info"> { props.texto } </Button>
+        <Button variant={ props.variante }> { props.texto } </Button>
     )
 }
