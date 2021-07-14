@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './components/Item.css';
 import NavBar from './components/NavBar';
 import ItemCount from './components/ItemCount';
+import ItemListContainer from './components/ItemListContainer';
 import { useState } from 'react';
 
 <link
@@ -11,21 +13,22 @@ import { useState } from 'react';
 />
 
 function App() {
-  const [totalItems, setTotalItems] = useState(0);
+  // const [totalItems, setTotalItems] = useState(0);
 
-  const agregarAlCarrito = (unNumero) => {
-    console.log(unNumero);
-    setTotalItems(totalItems + unNumero);
-  }
+  // const agregarAlCarrito = (unNumero) => {
+  //   console.log(unNumero);
+  //   setTotalItems(totalItems + unNumero);
+  // }
 
   return (
     <div className="container">
       <NavBar />
-      <h2>La cantidad de elementos en el carrito es {totalItems}</h2>
+      <ItemListContainer/>
+      {/* <h2>La cantidad de elementos en el carrito es {totalItems}</h2>
       <ItemCount 
         stock={5}
         onAdd={agregarAlCarrito}
-        initial={1} />
+        initial={1} /> */}
     </div>
   );
 }
