@@ -1,10 +1,14 @@
-export default function ItemListContainer(props) {
+import './itemListContainer.css';
+import React from 'react';
+import ItemList from './ItemList';
+
+
+export default function ItemListContainer() {
     return (
-        <div className='itemListContainer'>
-            <h3>El siguiente texto fue pasado al ItemListContainer mediante props</h3>
-            <h4> { props.texto } </h4>
-
-
-        </div>
+        <>
+            <div className="itemListContainer container">
+                <ItemList/>
+            </div>
+        </>
     )
 }
