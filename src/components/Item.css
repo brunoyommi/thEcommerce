@@ -1,12 +1,26 @@
+.itemHeader{
+    height: 70px;
+}
 .productCard{
-    max-width: 100%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    height: 250px;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
     margin-left: 5px;
 }
 
-.itemContainer{
+ .itemContainer{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+} 
+
+.itemList{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: auto ;
@@ -15,5 +29,5 @@
 
 img{
     max-width: 100px;
-    max-height: 80px;
+    max-height: 100px;
 }

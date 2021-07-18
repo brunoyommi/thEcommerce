@@ -3,7 +3,8 @@ import './components/Item.css';
 import NavBar from './components/NavBar';
 import ItemCount from './components/ItemCount';
 import ItemListContainer from './components/ItemListContainer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 <link
   rel="stylesheet"
@@ -13,6 +14,8 @@ import { useState } from 'react';
 />
 
 function App() {
+
+  
   // const [totalItems, setTotalItems] = useState(0);
 
   // const agregarAlCarrito = (unNumero) => {
@@ -23,6 +26,7 @@ function App() {
   return (
     <div className="container">
       <NavBar />
+      {/* <ItemDetailContainer/> */}
       <ItemListContainer/>
       {/* <h2>La cantidad de elementos en el carrito es {totalItems}</h2>
       <ItemCount 
