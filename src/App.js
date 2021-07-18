@@ -26,8 +26,8 @@ function App() {
   return (
     <div className="container">
       <NavBar />
-      {/* <ItemDetailContainer/> */}
-      <ItemListContainer/>
+      <ItemDetailContainer/>
+      {/* <ItemListContainer/> */}
       {/* <h2>La cantidad de elementos en el carrito es {totalItems}</h2>
       <ItemCount 
         stock={5}
