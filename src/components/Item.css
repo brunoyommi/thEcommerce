@@ -63,3 +63,21 @@
     max-width: 100%;
     height: auto;
 }
+
+.itemCounter{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.counterInput{
+    border-style: hidden;
+    height: 30px;
+    width: 30px;
+}
+
+.home{
+    text-align: center;
+    margin-top: 150px;
+    background-color: grey;
+}

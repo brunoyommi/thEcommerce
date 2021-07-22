@@ -1,10 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/Item.css';
-import NavBar from './components/NavBar';
-import ItemCount from './components/ItemCount';
 import ItemListContainer from './components/ItemListContainer';
-import { useState, useEffect } from 'react';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import Home from './components/Home';
+import { useState, useEffect } from 'react';
+import NavBar from './components/NavBar';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 
 <link
   rel="stylesheet"
@@ -15,25 +17,17 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
 
-  
-  // const [totalItems, setTotalItems] = useState(0);
-
-  // const agregarAlCarrito = (unNumero) => {
-  //   console.log(unNumero);
-  //   setTotalItems(totalItems + unNumero);
-  // }
-
   return (
-    <div className="container">
+    <BrowserRouter>
       <NavBar />
-      <ItemDetailContainer/>
-      {/* <ItemListContainer/> */}
-      {/* <h2>La cantidad de elementos en el carrito es {totalItems}</h2>
-      <ItemCount 
-        stock={5}
-        onAdd={agregarAlCarrito}
-        initial={1} /> */}
-    </div>
+      <div className="container flex">
+        <Switch>
+          <Route path={'/'} exact component={Home} />
+          <Route path={'/products'} exact component={ItemListContainer} />
+          <Route path={'/product/:itemId'} exact component={ItemDetailContainer} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 export default App;

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ItemDetail({ title, image, price }) {
+export default function ItemDetail({ item, title, image, price }) {    
     return (
         <>
             <div className="card">

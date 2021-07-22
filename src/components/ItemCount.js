@@ -14,8 +14,8 @@ export default function ItemCount({onAdd,stock, initial}) {
 
     return (
         <>
-            <div>
-                <input type='number' disabled value={counter}></input>
+            <div className='itemCounter'>
+                <input className="counterInput" type='number' disabled value={counter}></input>
                 <button className='btn-primary' type='button' onClick={addItem}>+</button>
                 <button className='btn-primary' type='button' onClick={removeItem}>-</button>
                 <button className='btn-success' type='submit' onClick={()=>onAdd(counter)}>Agregar al carrito</button>

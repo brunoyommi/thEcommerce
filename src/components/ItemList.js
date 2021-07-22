@@ -1,6 +1,7 @@
 import React from 'react';
 import Item from './Item';
 import { useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function ItemList() {
     const [products, setProducts] = useState([]);
@@ -20,13 +21,17 @@ export default function ItemList() {
         <>
             <div className="itemList container">
                 {products.map((product, i) => {
-                    {console.log(product.title)}
+                    { console.log(product) }
                     return (
-                        <Item                            
-                            title={product.title}
-                            image={product.thumbnail}
-                            price={product.price} 
-                            id={i}/>
+                        <>
+                            <Link to={`/product/${product.id}`}>
+                                <Item
+                                    title={product.title}
+                                    image={product.thumbnail}
+                                    price={product.price}
+                                    id={i} />
+                            </Link>
+                        </>
                     )
                 })}
             </div>

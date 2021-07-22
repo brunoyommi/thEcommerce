@@ -2,25 +2,26 @@ import Navbar from 'react-bootstrap/navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
 import { Button } from "react-bootstrap";
+import { Link, Navlink } from 'react-router-dom';
 
 
 export default function NavBar() {
     return (
         <Navbar bg="success">
-            <Navbar.Brand>thEcommerce</Navbar.Brand>
+            <Navbar.Brand><Link to={`/`}>thEcommerce</Link></Navbar.Brand>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <a className="nav-link" href="#">Inicio <span className="sr-only">(current)</span></a>
+                        <Link className="nav-link" to="/">Inicio</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Ofertas</a>
+                        <Link className="nav-link" to="/products">Productos</Link>
                     </li>
                     <NavDropdown title="Categorías ">
-                        <Nav.Link href="#">Moda</Nav.Link>
-                        <Nav.Link href="#">Electrónica</Nav.Link>
-                        <Nav.Link href="#">Smartphones</Nav.Link>
-                        <Nav.Link href="#">Electrodomésticos</Nav.Link>
+                        <Nav.Link><Link to={`/products`}>Moda</Link></Nav.Link>
+                        <Nav.Link><Link to={`/products`}>Electrónica</Link></Nav.Link>
+                        <Nav.Link><Link to={`/products`}>Smartphones</Link></Nav.Link>
+                        <Nav.Link><Link to={`/products`}>Electrodomésticos</Link></Nav.Link>
                     </NavDropdown>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
