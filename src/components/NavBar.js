@@ -2,7 +2,7 @@ import Navbar from 'react-bootstrap/navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
 import { Button } from "react-bootstrap";
-import { Link, Navlink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default function NavBar() {
@@ -18,15 +18,15 @@ export default function NavBar() {
                         <Link className="nav-link" to="/products">Productos</Link>
                     </li>
                     <NavDropdown title="Categorías ">
-                        <Nav.Link><Link to={`/products`}>Moda</Link></Nav.Link>
-                        <Nav.Link><Link to={`/products`}>Electrónica</Link></Nav.Link>
-                        <Nav.Link><Link to={`/products`}>Smartphones</Link></Nav.Link>
-                        <Nav.Link><Link to={`/products`}>Electrodomésticos</Link></Nav.Link>
+                        <Nav.Link><Link to={`/products/category/MLA1430`}>Moda</Link></Nav.Link>
+                        <Nav.Link><Link to={`/products/category/MLA1648`}>Computación</Link></Nav.Link>
+                        <Nav.Link><Link to={`/products/category/MLA1051`}>Smartphones</Link></Nav.Link>
+                        <Nav.Link><Link to={`/products/category/MLA5726`}>Electrodomésticos</Link></Nav.Link>
                     </NavDropdown>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     <input className="form-control mr-sm-2" type="search" placeholder="" aria-label="Search"></input>
-                    <Button variant='success'> Buscar </Button>
+                    <Button variant='danger'> Buscar </Button>
                 </form>
                 <Button className="btn btn-outline-dark my-2 my-sm-0 .bg-gradient-success" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">

@@ -1,9 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './components/Item.css';
+import './components/app.css';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Home from './components/Home';
-import { useState, useEffect } from 'react';
 import NavBar from './components/NavBar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -24,6 +23,7 @@ function App() {
         <Switch>
           <Route path={'/'} exact component={Home} />
           <Route path={'/products'} exact component={ItemListContainer} />
+          <Route path={'/products/category/:categoryId'} exact component={ItemListContainer} />
           <Route path={'/product/:itemId'} exact component={ItemDetailContainer} />
         </Switch>
       </div>

@@ -71,9 +71,10 @@
 }
 
 .counterInput{
+    text-align: center;
     border-style: hidden;
     height: 30px;
-    width: 30px;
+    width: 50px;
 }
 
 .home{

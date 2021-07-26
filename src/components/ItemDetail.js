@@ -1,6 +1,14 @@
 import React from "react";
+import ItemCount from './ItemCount';
+import { useState } from 'react';
 
-export default function ItemDetail({ item, title, image, price }) {    
+export default function ItemDetail({ item, title, image, price, description, stock }) {
+    const [totalItems, setTotalItems] = useState(0);
+
+    const agregarAlCarrito = (unNumero) => {
+        setTotalItems(totalItems + unNumero);
+    }
+
     return (
         <>
             <div className="card">
@@ -8,7 +16,7 @@ export default function ItemDetail({ item, title, image, price }) {
                     <aside className="col-sm-5 border-right">
                         <article className="gallery-wrap">
                             <div className="img-big-wrap">
-                                <div> <img className="detailImage" src={image} /></div>
+                                <div> <img className="detailImage" alt="" src={image} /></div>
                             </div>
                         </article>
                     </aside>
@@ -23,13 +31,19 @@ export default function ItemDetail({ item, title, image, price }) {
                             </p>
                             <dl className="item-property">
                                 <dt>Descripcion</dt>
-                                <dd><p>Here goes description consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco </p></dd>
+                                <dd><p>{description} </p></dd>
+                            </dl>
+                            <dl className="item-property">
+                                <dt>Unidades disponibles</dt>
+                                <dd><p>{stock} </p></dd>
                             </dl>
 
+                            <ItemCount
+                                stock={stock}
+                                onAdd={agregarAlCarrito}
+                                initial={1} />
+                            <br></br>
                             <a href="#" className="btn btn-lg btn-primary text-uppercase"> Comprar </a>
-                            <a href="#" className="btn btn-lg btn-outline-primary text-uppercase"> <i className="fas fa-shopping-cart"></i> Agregar al carrito </a>
                         </article>
                     </aside>
                 </div>
