@@ -4,7 +4,9 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
+import Cart from './components/Cart';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import CartProvider, { CartContext } from './components/Context';
 
 
 <link
@@ -14,20 +16,21 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
   crossorigin="anonymous"
 />
 
-function App() {
+function App() {  
 
   return (
-    <BrowserRouter>
-      <NavBar />
-      <div className="container flex">
-        <Switch>
-          <Route path={'/'} exact component={Home} />
-          <Route path={'/products'} exact component={ItemListContainer} />
-          <Route path={'/products/category/:categoryId'} exact component={ItemListContainer} />
-          <Route path={'/product/:itemId'} exact component={ItemDetailContainer} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+        <NavBar />
+        <div className="container flex">
+          <Switch>
+            <Route path={'/'} exact component={Home} />
+            <Route path={'/products'} exact component={ItemListContainer} />
+            <Route path={'/products/category/:categoryId'} exact component={ItemListContainer} />
+            <Route path={'/product/:itemId'} exact component={ItemDetailContainer} />
+            <Route path="/cart" exact component={Cart} />
+          </Switch>
+        </div>
+      </BrowserRouter>
   );
 }
 export default App;

@@ -1,12 +1,13 @@
 import React from "react";
 import ItemCount from './ItemCount';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ItemDetail({ item, title, image, price, description, stock }) {
-    const [totalItems, setTotalItems] = useState(0);
+    const [counter, setCounter] = useState(0);
 
     const agregarAlCarrito = (unNumero) => {
-        setTotalItems(totalItems + unNumero);
+        setCounter(unNumero);
     }
 
     return (
@@ -38,12 +39,13 @@ export default function ItemDetail({ item, title, image, price, description, sto
                                 <dd><p>{stock} </p></dd>
                             </dl>
 
-                            <ItemCount
+                            <br></br>
+
+                            {counter != 0 ? <Link to={`/cart`}><a className="btn btn-lg btn-primary text-uppercase"> Comprar </a> </Link> : <ItemCount
                                 stock={stock}
                                 onAdd={agregarAlCarrito}
-                                initial={1} />
-                            <br></br>
-                            <a href="#" className="btn btn-lg btn-primary text-uppercase"> Comprar </a>
+                                initial={1} />}
+
                         </article>
                     </aside>
                 </div>
