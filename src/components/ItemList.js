@@ -8,6 +8,7 @@ export default function ItemList({categoryId}) {
 
     useEffect(() => {
         fetchData();
+        
     }, [categoryId]);
     
     const fetchData = async () => {
