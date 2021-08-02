@@ -1,15 +1,17 @@
 import React from 'react';
 import { useCartContext } from './Context';
+import { Link } from 'react-router-dom';
 
 
 export default function Cart() {
-    const { removeFromCart, cartItems, clearCart, cartCount } = useCartContext();
+    const { removeFromCart, cartItems, clearCart, cartCount, subTotal } = useCartContext();
 
+    console.log(subTotal);
 
     return (
         <>
             <div className="home">
-                <div style={{ display: "inline-flex" }} className="card-header">
+                <div style={{ display: "inline-flex" }}  className="card-header">
                     <div style={{ marginRight: "800px" }}>
                         <h1>CARRITO</h1>
                     </div>
@@ -29,7 +31,12 @@ export default function Cart() {
                         </div>
 
                     </div>)}
-
+                {subTotal > 0 && <h3>Subtotal: ${subTotal}</h3>}
+                {subTotal === 0 &&
+                    <div className="card-body">
+                        <h5>Su carrito está vacío, elija un nuevo producto</h5>
+                        <Link className="nav-link" to="/products">Continuar comprando</Link>
+                    </div>}
 
 
             </div>

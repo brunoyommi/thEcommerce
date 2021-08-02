@@ -7,15 +7,18 @@ export const useCartContext = () => useContext(CartContext);
 const CartProvider = ({ children }) => {
     const [cartCount, setCartCount] = useState(0);
     const [cartItems, setCartItems] = useState([]);
+    const [subTotal, setSubtotal] = useState(0);
 
     const clearCart = () =>{
         setCartItems([]);
         setCartCount(0);
+        setSubtotal(0);
     }
     const removeFromCart = (item) => {
         const result = cartItems.filter(anItem => anItem.title != item.title);
         setCartItems(result);
         setCartCount(prev => prev - item.qty);
+        setSubtotal(subTotal - (item.qty * item.price));
     }
 
     const addToCart = (item, qty) => {
@@ -32,11 +35,12 @@ const CartProvider = ({ children }) => {
                 setCartItems([...cartItems, { ...item, qty }])
             }
             setCartCount(prev => prev + qty);
+            setSubtotal(subTotal + (qty * item.price));
         }
     }
 
     return (
-        <CartContext.Provider value={{ cartCount, cartItems, addToCart, removeFromCart, clearCart }}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ subTotal, cartCount, cartItems, addToCart, removeFromCart, clearCart }}>{children}</CartContext.Provider>
     )
 }
 

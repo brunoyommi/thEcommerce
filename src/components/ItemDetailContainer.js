@@ -18,7 +18,7 @@ export default function ItemDetailContainer() {
     const fetchData = async () => {
         const response = await fetch(`https://api.mercadolibre.com/items/${itemId}`);        
         const data = await response.json();
-        setItem(data); 
+        setItem(data);         
     }
     const fetchDescription = async () => {
         const desciptionResponse = await fetch(`https://api.mercadolibre.com/items/${itemId}/description?api_version=2`);        
