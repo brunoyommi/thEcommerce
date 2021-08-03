@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ItemCount from './ItemCount';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCartContext } from './Context';
 
 export default function ItemDetail({ item, title, image, price, description, stock }) {
-    const [counter, setCounter] = useState(0);
 
-    const agregarAlCarrito = (unNumero) => {
-        setCounter(unNumero);
-    }
+    const { cartItems, cartCount } = useCartContext();
 
     return (
         <>
@@ -40,12 +38,13 @@ export default function ItemDetail({ item, title, image, price, description, sto
                             </dl>
 
                             <br></br>
-
-                            {counter != 0 ? <Link to={`/cart`}><a className="btn btn-lg btn-primary text-uppercase"> Comprar </a> </Link> : <ItemCount
+                            <ItemCount
+                                item={item}
                                 stock={stock}
-                                onAdd={agregarAlCarrito}
-                                initial={1} />}
+                                initial={1} />
+                            <br></br>
 
+                            {cartCount > 0 && <Link to={`/cart`}><a className="btn btn-lg btn-outline-primary text-uppercase"> Comprar </a> </Link>}
                         </article>
                     </aside>
                 </div>

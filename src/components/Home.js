@@ -4,7 +4,7 @@ export default function Home() {
     return (
         <>
             <div className="home">
-                <h1>PÁGINA DE INCIO</h1>
+                <h1 style={{ textAlign: "center" }}>PÁGINA DE INCIO</h1>
             </div>
         </>
     )

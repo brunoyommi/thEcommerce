@@ -6,7 +6,7 @@ import Home from './components/Home';
 import NavBar from './components/NavBar';
 import Cart from './components/Cart';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import CartProvider, { CartContext } from './components/Context';
+import CartProvider from './components/Context';
 
 
 <link
@@ -16,9 +16,10 @@ import CartProvider, { CartContext } from './components/Context';
   crossorigin="anonymous"
 />
 
-function App() {  
+function App() {
 
   return (
+    <CartProvider>
       <BrowserRouter>
         <NavBar />
         <div className="container flex">
@@ -31,6 +32,7 @@ function App() {
           </Switch>
         </div>
       </BrowserRouter>
+    </CartProvider>
   );
 }
 export default App;
