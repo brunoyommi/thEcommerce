@@ -2,12 +2,15 @@ import React from 'react';
 import Item from './Item';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {getFirestore} from "../firebase";
 
 export default function ItemList({ categoryId }) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         fetchData();        
+        const firestore = getFirestore();
+        console.log(firestore);        
     }, [categoryId]);
 
     const fetchData = async () => {

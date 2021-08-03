@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ItemCount from './ItemCount';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCartContext } from './Context';
 
 export default function ItemDetail({ item, title, image, price, description, stock }) {
 
-    const { cartItems, cartCount } = useCartContext();
+    const { cartCount } = useCartContext();
 
     return (
         <>
@@ -44,7 +43,7 @@ export default function ItemDetail({ item, title, image, price, description, sto
                                 initial={1} />
                             <br></br>
 
-                            {cartCount > 0 && <Link to={`/cart`}><a className="btn btn-lg btn-outline-primary text-uppercase"> Comprar </a> </Link>}
+                            {cartCount > 0 && <Link className="btn btn-lg btn-outline-primary text-uppercase" to={`/cart`}> Comprar </Link>}
                         </article>
                     </aside>
                 </div>
