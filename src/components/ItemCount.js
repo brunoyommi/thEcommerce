@@ -19,9 +19,10 @@ export default function ItemCount({ item, stock, initial }) {
     let isInCart = false;
 
     cartItems.map((it, i) => {
-        if (it.id == item.id) {
+        if (it.id === item.id) {
             isInCart = true
         }
+        return true;
     }
     )
 

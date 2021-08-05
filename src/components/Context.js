@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { getFirestore } from "../firebase";
 
 export const CartContext = React.createContext();
 
@@ -8,6 +9,35 @@ const CartProvider = ({ children }) => {
     const [cartCount, setCartCount] = useState(0);
     const [cartItems, setCartItems] = useState([]);
     const [subTotal, setSubtotal] = useState(0);
+    const [ordenes, setOrdenes] = useState([]);
+    const [confirmacion, setConfirmacion] = useState(null);
+
+    const createOrder = (form) =>{
+        form.preventDefault();
+        const newOrder = {
+            buyer:{
+                name: form.target[0].value,
+                phone: form.target[1].value,
+                email: form.target[2].value
+            },
+            items: cartItems
+        }
+        const firestore = getFirestore();
+        const collection = firestore.collection("orders");
+        const query = collection.add(newOrder);
+
+        query
+            .then((resultado)=>{
+                setConfirmacion(resultado.id);
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+
+            clearCart();
+            setOrdenes();
+            setConfirmacion(null);
+    }
 
     const clearCart = () =>{
         setCartItems([]);
@@ -20,6 +50,8 @@ const CartProvider = ({ children }) => {
         setCartCount(prev => prev - item.qty);
         setSubtotal(subTotal - (item.qty * item.price));
     }
+
+
 
     const addToCart = (item, qty) => {
         if (qty > 0) {
@@ -40,7 +72,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ subTotal, cartCount, cartItems, addToCart, removeFromCart, clearCart }}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ confirmacion, ordenes, subTotal, cartCount, cartItems, addToCart, removeFromCart, clearCart, createOrder }}>{children}</CartContext.Provider>
     )
 }
 

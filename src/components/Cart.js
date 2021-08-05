@@ -9,7 +9,7 @@ export default function Cart() {
     return (
         <>
             <div className="home">
-                <div style={{ display: "inline-flex" }}  className="card-header">
+                <div style={{ display: "inline-flex" }} className="card-header">
                     <div style={{ marginRight: "800px" }}>
                         <h1>CARRITO</h1>
                     </div>
@@ -29,7 +29,12 @@ export default function Cart() {
                         </div>
 
                     </div>)}
-                {subTotal > 0 && <h3>Subtotal: ${subTotal}</h3>}
+                {subTotal > 0 &&
+                    <div className="confirmar-compra">
+                        <h3>Subtotal: ${subTotal}</h3>
+                        <Link className="btn btn-lg btn-outline-primary text-uppercase" to={`/checkout`}> CONFIRMAR COMPRA </Link>
+                    </div>
+                }
                 {subTotal === 0 &&
                     <div className="card-body">
                         <h5>Su carrito está vacío, elija un nuevo producto</h5>

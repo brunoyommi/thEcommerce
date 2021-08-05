@@ -5,6 +5,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CartProvider from './components/Context';
 
@@ -29,6 +30,7 @@ function App() {
             <Route path={'/products/category/:categoryId'} exact component={ItemListContainer} />
             <Route path={'/product/:itemId'} exact component={ItemDetailContainer} />
             <Route path="/cart" exact component={Cart} />
+            <Route path="/checkout" exact component={Checkout} />
           </Switch>
         </div>
       </BrowserRouter>

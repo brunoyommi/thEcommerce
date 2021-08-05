@@ -15,7 +15,7 @@ export default function ItemList({ categoryId }) {
         const firestore = getFirestore();
         const collection = firestore.collection("products");
         setProducts([]);
-        if (categoryId != null) {
+        if (categoryId !== null) {
             const condicion = collection.where("category_id", "==", categoryId);
             const resultado = await condicion.get();
             resultado.forEach(documento => {
@@ -33,21 +33,26 @@ export default function ItemList({ categoryId }) {
 
     return (
         <>
-            <div className="itemList container">
-                {products.map((product, i) => {
-                    return (
-                        <>
-                            <Link to={`/product/${product.id}`}>
-                                <Item
-                                    title={product.title}
-                                    image={product.thumbnail}
-                                    price={product.price}
-                                />
-                            </Link>
-                        </>
-                    )
-                })}
-            </div>
+            {products.length !== 0 ?
+                <div className="itemList container">
+                    {products.map((product, i) => {
+                        return (
+                            <>
+                                <Link to={`/product/${product.id}`}>
+                                    <Item
+                                        title={product.title}
+                                        image={product.thumbnail}
+                                        price={product.price}
+                                    />
+                                </Link>
+                            </>
+                        )
+                    })}
+                </div>
+                : <div className="card-body">
+                    <h5>La categoría indicada no existe</h5>
+                    <Link className="nav-link" to="/products">Continuar comprando</Link>
+                </div>}
         </>
     )
 }

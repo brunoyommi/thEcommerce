@@ -82,5 +82,30 @@
     text-align: left;
     margin-top: 100px;
     margin-bottom: 100px;
+}
 
+.checkout{
+    border-style: solid;
+    text-align: left;
+    margin-top: 25px;
+    margin-bottom: 100px;
+}
+
+.checkout-form{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.purchaseButton{
+    height: 50px;
+}
+
+.confirmar-compra{
+    margin: 15px;
+}
+
+.alertConfirmacion{
+    display: inline-flex;
+    margin-top: 25px; 
 }
