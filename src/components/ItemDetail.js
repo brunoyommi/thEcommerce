@@ -1,6 +1,5 @@
 import React from "react";
 import ItemCount from './ItemCount';
-import { Link } from 'react-router-dom';
 import { useCartContext } from './Context';
 
 export default function ItemDetail({ item, title, image, price, description, stock }) {
@@ -40,10 +39,7 @@ export default function ItemDetail({ item, title, image, price, description, sto
                             <ItemCount
                                 item={item}
                                 stock={stock}
-                                initial={1} />
-                            <br></br>
-
-                            {cartCount > 0 && <Link className="btn btn-lg btn-outline-primary text-uppercase" to={`/cart`}> Comprar </Link>}
+                                initial={1} />                            
                         </article>
                     </aside>
                 </div>

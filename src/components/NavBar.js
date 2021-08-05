@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from 'react-bootstrap/navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
+import { getFirestore } from "../firebase";
 
 
 export default function NavBar() {
-    const listaCategorias = [{ nombre: 'Moda', id: 'MLA1430' }, { nombre: 'Computacion', id: 'MLA1648' }, { nombre: 'Smartphones', id: 'MLA1051' }, { nombre: 'Electrodomésticos', id: 'MLA5726' }];
+    const listaCategorias = [{ nombre: 'Zapatillas', id: 'MLA109027' }, { nombre: 'Cortinas', id: 'MLA4771' }, { nombre: 'Medias', id: 'MLA109279' }, { nombre: 'Electrodomésticos', id: 'MLA5726' }];
 
+    const [categories, setCategories] = useState([]);
 
-    const buscar = (form) =>{
-        form.preventDefault();
-        console.log('Usted ha buscado: ', form.target[0].value);
+    useEffect(() => {
+        fetchCategories();
+    }, []);
+
+    const fetchCategories = async () => {
+        let catArr = [];
+        const firestore = getFirestore();
+        const collection = firestore.collection("products");
+        const resultado = await collection.get();
+
+        resultado.forEach(documento => {
+            let newCategory = documento.data().category_id;
+            if (!catArr.includes(newCategory)) {
+                catArr = [...catArr, newCategory]
+            }
+        })
+        setCategories(catArr);
     }
-
 
     return (
         <Navbar bg="success">
@@ -29,19 +44,15 @@ export default function NavBar() {
                         <Link className="nav-link" to="/products">Productos</Link>
                     </li>
                     <NavDropdown title="Categorías ">
-                        {listaCategorias.map((cat, i) => {
+                        {categories.map((cat, i) => {
                             return (
                                 <>
-                                    <Nav.Link><Link to={`/products/category/${cat.id}`}>{cat.nombre}</Link></Nav.Link>
+                                    <Nav.Link><Link to={`/products/category/${cat}`}>{cat}</Link></Nav.Link>
                                 </>
                             )
                         })}
                     </NavDropdown>
                 </ul>
-                <form onSubmit={(data)=>{buscar(data)}} className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="search" placeholder="" aria-label="Search"></input>
-                    <Button type="submit" variant='danger'> Buscar </Button>
-                </form>
                 <CartWidget></CartWidget>
             </div>
         </Navbar>
