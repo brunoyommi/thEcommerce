@@ -15,7 +15,7 @@ const CartProvider = ({ children }) => {
         setSubtotal(0);
     }
     const removeFromCart = (item) => {
-        const result = cartItems.filter(anItem => anItem.title != item.title);
+        const result = cartItems.filter(anItem => anItem.title !== item.title);
         setCartItems(result);
         setCartCount(prev => prev - item.qty);
         setSubtotal(subTotal - (item.qty * item.price));
