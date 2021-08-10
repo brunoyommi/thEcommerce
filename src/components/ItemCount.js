@@ -33,7 +33,7 @@ export default function ItemCount({ item, stock, initial }) {
             <div className='itemCounter'>
                 {!isInCart &&
                     <div>
-                        <button className='btn btn-lg btn-outline-primary text-uppercase' type='submit' onClick={() => addToCart(item, counter)}>Agregar al carrito</button>
+                        <button className='btn btn-lg btn-outline-primary text-uppercase btnAddToCart' type='submit' onClick={() => addToCart(item, counter)}>Agregar al carrito</button>
                         <button className='btn-danger' type='button' onClick={removeItem}>-</button>
                         <input className="counterInput" type='number' disabled value={counter}></input>
                         <button className='btn-primary' type='button' onClick={addItem}>+</button>

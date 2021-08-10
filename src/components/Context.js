@@ -10,12 +10,13 @@ const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
     const [subTotal, setSubtotal] = useState(0);
     const [ordenes, setOrdenes] = useState([]);
-    const [confirmacion, setConfirmacion] = useState(null);
+    const [mostrar, setMostrar] = useState(true);
+    const [idCompra, setidCompra] = useState ("");
 
-    const createOrder = (form) =>{
+    const createOrder = (form) => {
         form.preventDefault();
         const newOrder = {
-            buyer:{
+            buyer: {
                 name: form.target[0].value,
                 phone: form.target[1].value,
                 email: form.target[2].value
@@ -27,19 +28,26 @@ const CartProvider = ({ children }) => {
         const query = collection.add(newOrder);
 
         query
-            .then((resultado)=>{
-                setConfirmacion(resultado.id);
+            .then((resultado) => {
+                setidCompra(resultado.id);
+                clearCart();
+                console.log("Se limpió el carrito")
+                console.log(cartItems)
+                setOrdenes();
+                console.log("Se limpiaron las ordenes")
+                console.log(ordenes)
+                setMostrar(false);
+                console.log("Se limpio el codigo de confirmacion")
+                setCartCount(0);
+                console.log("Se limpio la cantidad de items")
+                console.log(cartCount)
             })
-            .catch((error)=>{
+            .catch((error) => {
                 console.log(error);
-            })
-
-            clearCart();
-            setOrdenes();
-            setConfirmacion(null);
+            })           
     }
 
-    const clearCart = () =>{
+    const clearCart = () => {
         setCartItems([]);
         setCartCount(0);
         setSubtotal(0);
@@ -72,7 +80,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ confirmacion, ordenes, subTotal, cartCount, cartItems, addToCart, removeFromCart, clearCart, createOrder }}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ mostrar, idCompra, ordenes, subTotal, cartCount, cartItems, setMostrar, addToCart, removeFromCart, clearCart, createOrder }}>{children}</CartContext.Provider>
     )
 }
 

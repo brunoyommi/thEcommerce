@@ -109,3 +109,7 @@
     display: inline-flex;
     margin-top: 25px; 
 }
+
+.btnAddToCart{
+    margin-right: 50px;
+}

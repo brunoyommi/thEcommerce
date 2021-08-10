@@ -15,7 +15,7 @@ export default function ItemList({ categoryId }) {
         const firestore = getFirestore();
         const collection = firestore.collection("products");
         setProducts([]);
-        if (categoryId !== null) {
+        if (categoryId != null) {
             const condicion = collection.where("category_id", "==", categoryId);
             const resultado = await condicion.get();
             resultado.forEach(documento => {
@@ -33,7 +33,7 @@ export default function ItemList({ categoryId }) {
 
     return (
         <>
-            {products.length !== 0 ?
+            {products.length != 0 ?
                 <div className="itemList container">
                     {products.map((product, i) => {
                         return (
