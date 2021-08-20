@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Checkout() {
     const { setMostrar, idCompra, mostrar, createOrder, cartItems, cartCount, subTotal } = useCartContext();
-    const [nose, setNose] = useState("");
+    const [fragmento, setFragmento] = useState("");
     const x = () => (<div className="card-body">
         <h5>Su carrito está vacío, elija un nuevo producto</h5>
         <Link className="nav-link" to="/products">Continuar comprando</Link>
@@ -55,7 +55,7 @@ export default function Checkout() {
     )
 
     useEffect(() => {
-        (cartCount > 0 ) ? setNose(y) : setNose(x);
+        (cartCount > 0 ) ? setFragmento(y) : setFragmento(x);
         setMostrar(true);
     }, [])
 
@@ -63,7 +63,7 @@ export default function Checkout() {
         <>
             {mostrar ?
                 <div>
-                   {nose}
+                   {fragmento}
                 </div> :
                 <div>
                     <div className="alert d-block alert-success alertConfirmacion col-12" role="alert">

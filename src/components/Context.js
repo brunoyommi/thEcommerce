@@ -11,6 +11,7 @@ const CartProvider = ({ children }) => {
     const [subTotal, setSubtotal] = useState(0);
     const [ordenes, setOrdenes] = useState([]);
     const [mostrar, setMostrar] = useState(true);
+    const [mostrarBoton, setMostrarBoton] = useState(true);
     const [idCompra, setidCompra] = useState ("");
 
     const createOrder = (form) => {
@@ -76,11 +77,12 @@ const CartProvider = ({ children }) => {
             }
             setCartCount(prev => prev + qty);
             setSubtotal(subTotal + (qty * item.price));
+            setMostrarBoton(false);
         }
     }
 
     return (
-        <CartContext.Provider value={{ mostrar, idCompra, ordenes, subTotal, cartCount, cartItems, setMostrar, addToCart, removeFromCart, clearCart, createOrder }}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ mostrar, mostrarBoton, idCompra, ordenes, subTotal, cartCount, cartItems, setMostrar,setMostrarBoton, addToCart, removeFromCart, clearCart, createOrder }}>{children}</CartContext.Provider>
     )
 }
 

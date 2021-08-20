@@ -1,8 +1,12 @@
 import React from "react";
 import ItemCount from './ItemCount';
+import { useCartContext } from './Context';
 import { Link } from 'react-router-dom';
 
 export default function ItemDetail({ item, title, image, price, description, stock }) {
+
+    const { mostrarBoton } = useCartContext();
+
 
     return (
         <>
@@ -36,10 +40,15 @@ export default function ItemDetail({ item, title, image, price, description, sto
                                     </dl>
 
                                     <br></br>
-                                    <ItemCount
-                                        item={item}
-                                        stock={stock}
-                                        initial={1} />
+                                    <div className='itemCounter'>
+                                        <ItemCount
+                                            item={item}
+                                            stock={stock}
+                                            initial={1} />
+                                        {!mostrarBoton &&
+                                            <Link className="btn btn-lg btn-outline-primary text-uppercase" to={`/cart`}> Comprar </Link>
+                                        }
+                                    </div>
                                 </article>
                             </aside>
                         </div>

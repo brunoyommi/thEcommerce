@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
 import { getFirestore } from "../firebase";
-
+import { useCartContext } from './Context';
 
 export default function ItemDetailContainer() {
     const [item, setItem] = useState([]);
+    const { cartItems } = useCartContext();
 
     const { itemId } = useParams();
 
@@ -21,6 +22,11 @@ export default function ItemDetailContainer() {
         const resultado = await query.get();
         resultado.forEach(documento => {
             let newValue = documento.data();
+            if (cartItems.some(anItem => anItem.title === newValue.title)) {
+                const repeatedIndex = cartItems.findIndex(anItem => anItem.title === newValue.title);
+                const qtyInCart = cartItems[repeatedIndex].qty;
+                newValue.available_quantity = newValue.available_quantity - qtyInCart;
+            }
             setItem(newValue);
         })
     }
